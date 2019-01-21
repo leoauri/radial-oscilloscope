@@ -14,13 +14,6 @@ namespace GoldenAudio {
             sampleRate = AudioSettings.outputSampleRate;
             sampleDuration = 1f / sampleRate;
             Debug.Log(sampleDuration);
-
-            //var dummyClip = AudioClip.Create("dummyclip", 1, 1, (int)sampleRate, false);
-            //dummyClip.SetData(new float[] { 0 }, 0);
-            //var audioSource = GetComponent<AudioSource>();
-            //audioSource.clip = dummyClip;
-            //audioSource.loop = true;
-            //audioSource.Play();
         }
 
         private void OnAudioFilterRead(float[] buffer, int channels) {
