@@ -406,8 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3e9cfceb9ea4c8298a152a490e4743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Freq: 1000
-  Amp: 0.5
+  Freq: 400
+  Amp: 0.3
 --- !u!114 &979039092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,8 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3e9cfceb9ea4c8298a152a490e4743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Freq: 2000
-  Amp: 0.1
+  Freq: 500
+  Amp: 0.2
 --- !u!1 &1791891891
 GameObject:
   m_ObjectHideFlags: 0
