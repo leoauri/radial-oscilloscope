@@ -9,22 +9,23 @@ namespace GoldenAudio {
 
         private double sampleDuration;
         private double sampleRate;
+        private double phase;
 
         private void Awake() {
             sampleRate = AudioSettings.outputSampleRate;
             sampleDuration = 1f / sampleRate;
-            Debug.Log(sampleDuration);
         }
 
         private void OnAudioFilterRead(float[] buffer, int channels) {
-            double dspTime = AudioSettings.dspTime;
-
 
             for (int s = 0; s < buffer.Length; s += channels) {
 
-                double sampleTime = dspTime + s / channels * sampleDuration;
-                double synthesis = Math.Sin(Freq * sampleTime);
+                // Synthesise sine according to phase
+                double synthesis = Math.Sin(phase);
                 synthesis *= Amp;
+
+                // Increment phase (in radians) based on sample rate
+                phase += Math.PI * Freq / sampleRate;
 
                 // Add synth to both channels of buffer
                 for (int c = 0; c < channels; c++) {
