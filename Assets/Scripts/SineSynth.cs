@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GoldenAudio {
     [RequireComponent(typeof(AudioSource))]
@@ -9,32 +8,31 @@ namespace GoldenAudio {
 
         private double sampleDuration;
         private double sampleRate;
-        private double phase;
+
+        private SineUnitGen sineUnitGen;
 
         private void Awake() {
             sampleRate = AudioSettings.outputSampleRate;
             sampleDuration = 1f / sampleRate;
+
+            sineUnitGen = new SineUnitGen(sampleRate, Freq, Amp);
         }
 
         private void OnAudioFilterRead(float[] buffer, int channels) {
 
             for (int s = 0; s < buffer.Length; s += channels) {
 
-                // Synthesise sine according to phase
-                double synthesis = Math.Sin(phase);
-                synthesis *= Amp;
+                sineUnitGen.Freq = Freq;
+                sineUnitGen.Amp = Amp;
 
-                // Increment phase (in radians) based on sample rate
-                phase += Math.PI * Freq / sampleRate;
+                double synthesis = sineUnitGen.NextSample();
 
                 // Add synth to both channels of buffer
                 for (int c = 0; c < channels; c++) {
                     buffer[s + c] += (float)synthesis;
                 }
             }
-
         }
     }
-
 }
 
