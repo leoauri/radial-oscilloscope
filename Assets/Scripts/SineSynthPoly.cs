@@ -16,8 +16,8 @@ namespace GoldenAudio {
             sampleDuration = 1f / sampleRate;
         }
 
-        public void NewSine(double Freq, double Amp) {
-            generatorTable.Add(new SineUnitGen(sampleRate, Freq, Amp));
+        public void NewSine(double Freq, double Amp, double Attack = 0) {
+            generatorTable.Add(new SineUnitGen(sampleRate, Freq, Amp, Attack));
         }
 
         public void ReleaseSinesWithFreq(double Freq, double Release = 0) {
