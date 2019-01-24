@@ -4,6 +4,10 @@ namespace GoldenAudio {
     public class SineUnitGen {
         public double Freq;
         public double Amp;
+        public double Release;
+        public bool IsReleasing;
+        public bool IsFinished;
+
         private double SampleRate;
 
         private double sampleDuration;
@@ -18,6 +22,20 @@ namespace GoldenAudio {
         }
 
         public float NextSample() {
+            if (IsReleasing) {
+                if (Release <= 0 | Amp <= 0) {
+                    // Mark for removal and return 0
+                    IsFinished = true;
+                    return 0;
+                }
+                else {
+                    // Decrement amplitude and release time
+                    Amp -= Amp / (Release * SampleRate);
+                    Release -= sampleDuration;
+                }
+
+            }
+
             // Calculate sample
             double nextSample = Math.Sin(phase);
             nextSample *= Amp;

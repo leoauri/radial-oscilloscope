@@ -181,6 +181,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &177169596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177169598}
+  - component: {fileID: 177169597}
+  m_Layer: 0
+  m_Name: SynthController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &177169597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177169596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5e77e7716ea4deb858db16c5e5e590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Synth: {fileID: 979039091}
+--- !u!4 &177169598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177169596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.761928, y: -7.5563965, z: 85.53073}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +318,6 @@ GameObject:
   m_Component:
   - component: {fileID: 979039089}
   - component: {fileID: 979039091}
-  - component: {fileID: 979039092}
   - component: {fileID: 979039090}
   m_Layer: 0
   m_Name: SineSynth
@@ -403,25 +446,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 979039088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3e9cfceb9ea4c8298a152a490e4743, type: 3}
+  m_Script: {fileID: 11500000, guid: 9697d699a2f9544d1a61344b45b740de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Freq: 400
-  Amp: 0.3
---- !u!114 &979039092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979039088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3e9cfceb9ea4c8298a152a490e4743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Freq: 500
-  Amp: 0.2
 --- !u!1 &1791891891
 GameObject:
   m_ObjectHideFlags: 0

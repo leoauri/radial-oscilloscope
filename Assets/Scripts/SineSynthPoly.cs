@@ -20,6 +20,15 @@ namespace GoldenAudio {
             generatorTable.Add(new SineUnitGen(sampleRate, Freq, Amp));
         }
 
+        public void ReleaseSinesWithFreq(double Freq, double Release = 0) {
+            for (int i = generatorTable.Count - 1; i >= 0; i--) {
+                if (generatorTable[i].Freq == Freq) {
+                    generatorTable[i].Release = Release;
+                    generatorTable[i].IsReleasing = true;
+                }
+            }
+        }
+
         private void OnAudioFilterRead(float[] buffer, int channels) {
 
             for (int s = 0; s < buffer.Length; s += channels) {
@@ -29,10 +38,13 @@ namespace GoldenAudio {
                 // Traverse generator table in reverse so we can remove instances on the way if they are finished
                 for (int i = generatorTable.Count - 1; i >= 0; i--) {
                     // If isFinished .RemoveAt(i);
-
-                    synthesis += generatorTable[i].NextSample();
+                    if (generatorTable[i].IsFinished == true) {
+                        generatorTable.RemoveAt(i);
+                    }
+                    else {
+                        synthesis += generatorTable[i].NextSample();
+                    }
                 }
-
 
                 //sineUnitGen.Freq = Freq;
                 //sineUnitGen.Amp = Amp;

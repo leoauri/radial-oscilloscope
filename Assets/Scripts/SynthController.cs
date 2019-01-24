@@ -21,6 +21,17 @@ namespace GoldenAudio {
             if (Input.GetKeyDown(KeyCode.E)) {
                 Synth.NewSine(600, 0.2);
             }
+
+            if (Input.GetKeyDown(KeyCode.A)) {
+                Synth.ReleaseSinesWithFreq(400, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.S)) {
+                Synth.ReleaseSinesWithFreq(500, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.D)) {
+                Synth.ReleaseSinesWithFreq(600, 1);
+            }
+
         }
     }
 }
