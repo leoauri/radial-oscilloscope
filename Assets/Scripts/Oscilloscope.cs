@@ -17,8 +17,8 @@ public class Oscilloscope : MonoBehaviour
     void FixedUpdate()
     {
         float osc = 2f;
-        //osc += 0.3f * Mathf.Sin(6.5f * Time.time); 
-        osc += 1f * Mathf.Sin(50f / 12f * Time.time);
+        osc += 0.3f * Mathf.Sin(7f / 12f * Time.time); 
+        osc += 0.8f * Mathf.Sin(50f / 12f * Time.time);
         scopePen.position = new Vector3(osc * Mathf.Sin(Time.time), osc * Mathf.Cos(Time.time));
     }
 
