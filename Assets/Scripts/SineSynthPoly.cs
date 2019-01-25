@@ -37,12 +37,15 @@ namespace GoldenAudio {
 
                 // Traverse generator table in reverse so we can remove instances on the way if they are finished
                 for (int i = generatorTable.Count - 1; i >= 0; i--) {
-                    // If isFinished .RemoveAt(i);
-                    if (generatorTable[i].IsFinished == true) {
-                        generatorTable.RemoveAt(i);
-                    }
-                    else {
-                        synthesis += generatorTable[i].NextSample();
+                    // Make sure the object is instantiated before we start calling it
+                    if (generatorTable[i] != null) {
+                        // Remove if finished
+                        if (generatorTable[i].IsFinished == true) {
+                            generatorTable.RemoveAt(i);
+                        }
+                        else {
+                            synthesis += generatorTable[i].NextSample();
+                        }
                     }
                 }
 
