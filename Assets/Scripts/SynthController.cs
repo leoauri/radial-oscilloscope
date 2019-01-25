@@ -21,6 +21,12 @@ namespace GoldenAudio {
             if (Input.GetKeyDown(KeyCode.E)) {
                 Synth.NewSine(600, 0.2, 10);
             }
+            if (Input.GetKeyDown(KeyCode.R)) {
+                Synth.NewSine(700, 0.2, 10);
+            }
+            if (Input.GetKeyDown(KeyCode.T)) {
+                Synth.NewSine(800, 0.2, 10);
+            }
 
             if (Input.GetKeyDown(KeyCode.A)) {
                 Synth.ReleaseSinesWithFreq(400, 1);
@@ -30,6 +36,12 @@ namespace GoldenAudio {
             }
             if (Input.GetKeyDown(KeyCode.D)) {
                 Synth.ReleaseSinesWithFreq(600, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F)) {
+                Synth.ReleaseSinesWithFreq(700, 2);
+            }
+            if (Input.GetKeyDown(KeyCode.G)) {
+                Synth.ReleaseSinesWithFreq(800, 2.5);
             }
 
         }
