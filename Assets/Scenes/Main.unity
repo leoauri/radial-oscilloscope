@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Synth: {fileID: 979039091}
+  TestMode: 1
 --- !u!4 &177169598
 Transform:
   m_ObjectHideFlags: 0
