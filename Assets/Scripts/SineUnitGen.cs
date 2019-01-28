@@ -2,6 +2,7 @@
 
 namespace GoldenAudio {
     public class SineUnitGen {
+        public int Voice;
         public double Freq;
         public double Amp;
         public double Attack;
@@ -14,7 +15,8 @@ namespace GoldenAudio {
         private double sampleDuration;
         private double phase;
 
-        public SineUnitGen(double sampleRate, double freq, double amp) {
+        public SineUnitGen(int voice, double sampleRate, double freq, double amp) {
+            Voice = voice;
             Freq = freq;
             Amp = amp;
             sustain = amp;
@@ -23,7 +25,8 @@ namespace GoldenAudio {
             sampleDuration = 1f / sampleRate;
         }
 
-        public SineUnitGen(double sampleRate, double freq, double amp, double attack) {
+        public SineUnitGen(int voice, double sampleRate, double freq, double amp, double attack) {
+            Voice = voice;
             Freq = freq;
             sustain = amp;
             Attack = attack;

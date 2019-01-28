@@ -15,7 +15,7 @@ namespace GoldenAudio {
             sampleRate = AudioSettings.outputSampleRate;
             sampleDuration = 1f / sampleRate;
 
-            sineUnitGen = new SineUnitGen(sampleRate, Freq, Amp);
+            sineUnitGen = new SineUnitGen(0, sampleRate, Freq, Amp);
         }
 
         private void OnAudioFilterRead(float[] buffer, int channels) {

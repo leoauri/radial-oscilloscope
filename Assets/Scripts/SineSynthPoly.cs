@@ -9,6 +9,8 @@ namespace GoldenAudio {
 
         private double synthesis;
 
+        private int voiceCount = 0;
+
         private List<SineUnitGen> generatorTable = new List<SineUnitGen>();
 
         private void Awake() {
@@ -16,15 +18,52 @@ namespace GoldenAudio {
             sampleDuration = 1f / sampleRate;
         }
 
-        public void NewSine(double Freq, double Amp, double Attack = 0) {
-            generatorTable.Add(new SineUnitGen(sampleRate, Freq, Amp, Attack));
+        public int NewSine(double Freq, double Amp, double Attack = 0) {
+            generatorTable.Add(new SineUnitGen(voiceCount, sampleRate, Freq, Amp, Attack));
+            // Return UGen Voice
+            return voiceCount++;
+        }
+
+        public void SetFreq(int Voice, double Freq) {
+            for (int i = generatorTable.Count - 1; i >= 0; i--) {
+                if (generatorTable[i].Voice == Voice) {
+                    generatorTable[i].Freq = Freq;
+                }
+            }
+        }
+
+        public void SetAmp(int Voice, double Amp) {
+            for (int i = generatorTable.Count - 1; i >= 0; i--) {
+                if (generatorTable[i].Voice == Voice) {
+                    generatorTable[i].Amp = Amp;
+                }
+            }
+        }
+
+
+        private void ReleaseI(int i, double Release = 0) {
+                    generatorTable[i].Release = Release;
+                    generatorTable[i].IsReleasing = true;
+                }
+
+        public void ReleaseVoice(int Voice, double Release = 0) {
+            for (int i = generatorTable.Count - 1; i >= 0; i--) {
+                if (generatorTable[i].Voice == Voice) {
+                    ReleaseI(i, Release);
+                }
+            }
+        }
+
+        public void ReleaseAll(double Release = 0) {
+            for (int i = generatorTable.Count - 1; i >= 0; i--) {
+                ReleaseI(i, Release);
+            }
         }
 
         public void ReleaseSinesWithFreq(double Freq, double Release = 0) {
             for (int i = generatorTable.Count - 1; i >= 0; i--) {
                 if (generatorTable[i].Freq == Freq) {
-                    generatorTable[i].Release = Release;
-                    generatorTable[i].IsReleasing = true;
+                    ReleaseI(i, Release);
                 }
             }
         }
